@@ -53,6 +53,12 @@ class SymbolsView extends SelectListView
         position: editor.getCursorBufferPosition()
         file: editor.getURI()
 
+    console.log 'opa'
+    # Logid added for the experiment
+    projectPath = atom.project.getPath() + '/experiment.log'
+    experimentPrint = "targetMethod:" + tag.targetMethod + ";order:" + tag.order + ";name:" + tag.name + ";fromFile:" + tag.fromFile + ";fromLine:" + tag.fromLine + ";file:" + tag.file + "\n"
+    fs.appendFile(projectPath, experimentPrint)
+
     {position} = tag
     position = @getTagLine(tag) unless position
     if tag.file
